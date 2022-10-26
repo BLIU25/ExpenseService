@@ -53,15 +53,25 @@ namespace Expense.Service.Test
             Assert.Equal(ExpenseType.OTHER_EXPENSE, expenseType);
         }
 
+        // [Fact]
+        // public void Should_throw_unexpected_project_exception_if_project_is_invalid()
+        // {
+        //     // given
+        //     Project project = new Project(ProjectType.UNEXPECTED_PROJECT_TYPE, projectName: "123");
+        //     // when
+        //     Action action = () => ExpenseService.GetExpenseCodeByProjectTypeAndName(project);
+        //     // then
+        //     Assert.Throws<UnexpectedProjectTypeException>(action);
+        // }
+
         [Fact]
         public void Should_throw_unexpected_project_exception_if_project_is_invalid()
         {
             // given
             Project project = new Project(ProjectType.UNEXPECTED_PROJECT_TYPE, projectName: "123");
             // when
-            Action action = () => ExpenseService.GetExpenseCodeByProjectTypeAndName(project);
             // then
-            Assert.Throws<UnexpectedProjectTypeException>(action);
+            Assert.Throws<UnexpectedProjectTypeException>(() => ExpenseService.GetExpenseCodeByProjectTypeAndName(project));
         }
     }
 }
